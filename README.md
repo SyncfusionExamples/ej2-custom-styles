@@ -2,17 +2,17 @@
 
 ## Installing
 
-Use the below command to install the dependent packages.
+To install the dependent packages, use the below command.
 
 `
 npm install
 `
 
-## How to Customize Essential JS 2 Component Styles?
+## How it works?
 
-- The Essential JS 2 components style variables are already declared in the `styles/definition` location, categorized by theme.
+- The Essential JS 2 components style variables are already declared in the `styles/definition` location, categorized by theme name.
 
-- You can change the corresponding variable's color value for your customization.
+- You can change the specific variable's color value as per your customization.
 
 - Now run the below command and choose the `Essential JS 2` packages for creating custom styles.
 
@@ -20,6 +20,6 @@ npm install
 npm run compile
 `
 
-- The customized `{theme-name}.css` files will be generated under `styles` location.
+- After executing above command, the final output `{theme-name}.css` files will be created under `styles` location.
 
 ![demo](images/demo.gif)
