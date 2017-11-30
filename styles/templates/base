@@ -1,0 +1,3 @@
+@import 'definition/{themename}.scss';
+@import 'ej2-base/styles/{themename}-definition.scss';
+@import 'ej2-base/styles/all.scss';

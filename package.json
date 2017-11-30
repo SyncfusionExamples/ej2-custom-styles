@@ -1,0 +1,20 @@
+{
+    "name": "ej2-custom-styles",
+    "version": "1.0.0",
+    "description": "Essential JS 2 Custom Styles Generator",
+    "author": "ajithr",
+    "license": "MIT",
+    "dependencies": {
+        "@syncfusion/ej2": "*"
+    },
+    "devDependencies": {
+        "glob": "^7.1.2",
+        "gulp": "^3.9.1",
+        "gulp-sass": "^3.1.0",
+        "inquirer": "^4.0.1",
+        "shelljs": "^0.7.8"
+    },
+    "scripts": {
+        "compile": "gulp styles"
+    }
+}

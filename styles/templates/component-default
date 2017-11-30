@@ -1,0 +1,2 @@
+@import '{componentpath}/definition.scss';
+@import '{componentpath}/all.scss';

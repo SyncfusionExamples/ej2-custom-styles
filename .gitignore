@@ -1,0 +1,5 @@
+.vscode/
+node_modules/
+styles/*.css
+styles/*.scss
+styles/themes/
