@@ -8,7 +8,7 @@ To install the dependent packages, use the below command.
 
 ## Customizing Themes
 
-- The Essential JS 2 components style variables are already declared in the [`styles/definition`](https://github.com/ajithr/ej2-custom-styles/tree/master/styles/definition) location, categorized by theme name.
+- The Essential JS 2 components style variables are already declared in the [`styles/definition`](https://github.com/SyncfusionSamples/ej2-custom-styles/tree/master/styles/definition) location, categorized by theme name.
 
 - You can change the specific variable's color value to generate the customized theme.
 
@@ -21,6 +21,6 @@ $primary: #B0BEC5;
 
 > npm run compile
 
-- After executing the above command, the final output `{theme-name}.css` files will be created under [`styles`](https://github.com/ajithr/ej2-custom-styles/tree/master/styles) location.
+- After executing the above command, the final output `{theme-name}.css` files will be created under [`styles`](https://github.com/SyncfusionSamples/ej2-custom-styles/tree/master/styles) location.
 
 ![demo](images/demo.gif)
