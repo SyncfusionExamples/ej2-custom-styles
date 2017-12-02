@@ -14,8 +14,8 @@ To install the dependent packages, use the below command.
 
 For example, Changing `$accent` and `$primary` variable colors in material theme definition will generate a customized material theme with provided color changes.
 ```
-$accent: #607D8B;
-$primary: #B0BEC5;
+$accent: #FFAB40;
+$primary: #9C27B0;
 ```
 - Now run the below command and choose the `Essential JS 2` packages for creating custom styles.
 
