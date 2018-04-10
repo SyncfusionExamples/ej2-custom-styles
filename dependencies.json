@@ -1,0 +1,153 @@
+{
+    "ej2-grids": {
+        "pager": [],
+        "grid": [
+            "ej2-grids/pager",
+            "ej2-inputs",
+            "ej2-buttons",
+            "ej2-dropdowns",
+            "ej2-popups",
+            "ej2-calendars",
+            "ej2-navigations"
+        ]
+    },
+    "ej2-popups": {
+        "dialog": [],
+        "popup": [],
+        "tooltip": [],
+        "spinner": []
+    },
+    "ej2-dropdowns": {
+        "drop-down-base": [],
+        "drop-down-list": [
+            "ej2-inputs",
+            "ej2-popups",
+            "ej2-dropdowns/drop-down-base"
+        ],
+        "combo-box": [
+            "ej2-dropdowns/drop-down-list"
+        ],
+        "auto-complete": [
+            "ej2-dropdowns/drop-down-list"
+        ],
+        "multi-select": [
+            "ej2-inputs",
+            "ej2-popups",
+            "ej2-buttons",
+            "ej2-dropdowns/drop-down-base"
+        ]
+    },
+    "ej2-buttons": {
+        "button": [],
+        "check-box": [],
+        "radio-button": []
+    },
+    "ej2-lineargauge": {
+        "linear-gauge": [
+            "ej2-popups"
+        ]
+    },
+    "ej2-base": {},
+    "ej2-inputs": {
+        "input": [],
+        "numerictextbox": [
+            "ej2-inputs/input"
+        ],
+        "maskedtextbox": [
+            "ej2-inputs/input"
+        ],
+        "slider": [],
+        "uploader": []
+    },
+    "ej2-maps": {
+        "maps": [
+            "ej2-popups"
+        ]
+    },
+    "ej2-calendars": {
+        "calendar": [
+            "ej2-buttons"
+        ],
+        "timepicker": [
+            "ej2-inputs",
+            "ej2-popups"
+        ],
+        "datepicker": [
+            "ej2-inputs",
+            "ej2-popups"
+        ],
+        "daterangepicker": [
+            "ej2-inputs",
+            "ej2-popups",
+            "ej2-buttons",
+            "ej2-lists"
+        ],
+        "datetimepicker": [
+            "ej2-inputs",
+            "ej2-popups",
+            "ej2-buttons",
+            "ej2-lists"
+        ]
+    },
+    "ej2-navigations": {
+        "h-scroll": [],
+        "toolbar": [
+            "ej2-navigations/h-scroll",
+            "ej2-buttons/button",
+            "ej2-popups/popup"
+        ],
+        "accordion": [],
+        "context-menu": [],
+        "tab": [
+            "ej2-navigations/toolbar"
+        ],
+        "treeview": [
+            "ej2-inputs/input",
+            "ej2-buttons/check-box"
+        ],
+        "sidebar": []
+    },
+    "ej2-splitbuttons": {
+        "drop-down-button": [
+            "ej2-buttons/button",
+            "ej2-popups/popup"
+        ],
+        "split-button": [
+            "ej2-buttons/button",
+            "ej2-popups/popup",
+            "ej2-splitbuttons/drop-down-button"
+        ]
+    },
+    "ej2-charts": {
+        "accumulation-chart": [
+            "ej2-popups"
+        ]
+    },
+    "ej2-lists": {
+        "list-view": []
+    },
+    "ej2-circulargauge": {
+        "circular-gauge": [
+            "ej2-popups"
+        ]
+    },
+    "ej2-cards": {
+        "card": []
+    },
+    "ej2-schedule": {
+        "schedule": [
+            "ej2-navigations",
+            "ej2-popups",
+            "ej2-inputs",
+            "ej2-buttons",
+            "ej2-calendars",
+            "ej2-dropdowns"
+        ],
+        "recurrence-editor": [
+            "ej2-inputs",
+            "ej2-buttons",
+            "ej2-calendars",
+            "ej2-dropdowns"
+        ]
+    }
+}

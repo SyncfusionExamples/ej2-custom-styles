@@ -3,3 +3,5 @@ node_modules/
 styles/*.css
 styles/*.scss
 styles/themes/
+package-lock.json
+yarn.lock

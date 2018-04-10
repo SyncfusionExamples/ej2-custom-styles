@@ -1,2 +1,3 @@
+{Dependencies}
 @import '{componentpath}/{themename}-definition.scss';
 @import '{componentpath}/all.scss';

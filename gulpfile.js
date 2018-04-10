@@ -3,6 +3,7 @@ var path = require('path');
 var glob = require('glob');
 var gulp = require('gulp');
 var shelljs = require('shelljs');
+var componentDeps = JSON.parse(fs.readFileSync('./dependencies.json', 'utf8'));
 
 gulp.task('styles', function(done) {
     var inquirer = require('inquirer');
@@ -19,6 +20,9 @@ gulp.task('styles', function(done) {
                 },
                 {
                     name: '@syncfusion/ej2-calendars'
+                },
+                {
+                    name: '@syncfusion/ej2-cards',
                 },
                 {
                     name: '@syncfusion/ej2-charts'
@@ -42,10 +46,19 @@ gulp.task('styles', function(done) {
                     name: '@syncfusion/ej2-lists'
                 },
                 {
+                    name: '@syncfusion/ej2-maps'
+                },
+                {
                     name: '@syncfusion/ej2-navigations'
                 },
                 {
                     name: '@syncfusion/ej2-popups'
+                },
+                {
+                    name: '@syncfusion/ej2-schedule'
+                },
+                {
+                    name: '@syncfusion/ej2-splitbuttons'
                 }
             ],
             validate: function(answer) {
@@ -58,17 +71,20 @@ gulp.task('styles', function(done) {
         .then(answer => {
             // Remove previously generated theme files
             shelljs.rm('-rf', './styles/themes/');
-            var themes = ['bootstrap', 'fabric', 'material'];
+            var themes = ['bootstrap', 'fabric', 'highcontrast', 'material'];
             var template = fs.readFileSync('./styles/templates/base', 'utf8');
             // Get dependent component styles
+            // packages = ['@syncfusion/ej2-buttons', '@syncfusion/ej2-calendars', '@syncfusion/ej2-charts', '@syncfusion/ej2-circulargauge', '@syncfusion/ej2-dropdowns',
+            //     '@syncfusion/ej2-grids', '@syncfusion/ej2-inputs', '@syncfusion/ej2-lineargauge', '@syncfusion/ej2-lists', '@syncfusion/ej2-navigations', '@syncfusion/ej2-popups'
+            // ]
             var packs = getDependentStyles(answer.packages);
             for (var i = 0; i < themes.length; i++) {
                 var componentStyles = '';
                 var themeContent = template.replace(/{themename}/g, themes[i]);
                 for (var j = 0; j < packs.length; j++) {
                     var stylePath = 'node_modules/' + packs[j] + '/styles/**/';
-                    var styleFiles = glob.sync('{' + stylePath + 'bootstrap.scss,' + stylePath + 'fabric.scss,' + stylePath + 'material.scss}', { ignore: 'node_modules/' + packs[j] + '/styles/*.scss' })
-                    // Create component mapping files
+                    var styleFiles = glob.sync('{' + stylePath + 'bootstrap.scss,' + stylePath + 'fabric.scss,' + stylePath + 'material.scss,' + stylePath + 'highcontrast.scss}', { ignore: 'node_modules/' + packs[j] + '/styles/*.scss' })
+                        // Create component mapping files
                     createComponentStyles(styleFiles, themes[i]);
                 }
                 var components = fs.readdirSync('./styles/themes/' + themes[i]);
@@ -83,13 +99,14 @@ gulp.task('styles', function(done) {
             var sass = require('gulp-sass');
             gulp.src(['./styles/**/*.scss'], { base: './' })
                 .pipe(sass({
-                    outputStyle: 'expanded',
-                    includePaths: ["./node_modules/@syncfusion/"]
-                }).on('error', function(error) {
-                    isCompiled = false;
-                    gutil.log(new gutil.PluginError('sass', error.messageFormatted).toString());
-                    this.emit('end');
-                }))
+                        outputStyle: 'expanded',
+                        includePaths: ["./node_modules/@syncfusion/"]
+                    })
+                    .on('error', function(error) {
+                        isCompiled = false;
+                        gutil.log(new gutil.PluginError('sass', error.messageFormatted).toString());
+                        this.emit('end');
+                    }))
                 .pipe(gulp.dest('.'))
                 .on('end', function() {
                     console.log('\n\n!!! Custom Styles Successfully Compiled !!!\n\n');
@@ -114,6 +131,7 @@ function createComponentStyles(styleFiles) {
         }
         var dirPath = path.dirname(styleFiles[i]);
         var dirArray = dirPath.split('/');
+        var packageName = dirArray[2];
         var component = dirArray[dirArray.length - 1];
         var componentPath = dirPath.replace('node_modules/@syncfusion/', '');
         if (fs.existsSync(dirPath + '/_' + themeName + '-definition.scss') && fs.existsSync(dirPath + '/_definition.scss')) {
@@ -125,9 +143,29 @@ function createComponentStyles(styleFiles) {
         } else {
             componentStyle = compTemplate.replace(/{componentpath}/g, componentPath);
         }
+        componentStyle = getDependencies(componentStyle, themeName, packageName, component);
         var stylePath = themePath + '/_' + component + '.scss';
         fs.writeFileSync(stylePath, componentStyle);
     }
+}
+
+function getDependencies(componentStyle, themeName, packageName, component) {
+    var dependencies = componentDeps[packageName][component];
+    var deps = '';
+    for (var i = 0; i < dependencies.length; i++) {
+        var styleModule, pack = dependencies[i];
+        if (pack.indexOf('/') !== -1) {
+            styleModule = pack.split('/')[1];
+            deps += '@import "_' + styleModule + '.scss";\n';
+        } else {
+            var keys = Object.keys(componentDeps[pack]);
+            for (var j = 0; j < keys.length; j++) {
+                deps += '@import "_' + keys[j] + '.scss";\n';
+            }
+        }
+    }
+    var finalStyle = componentStyle.replace(/{Dependencies}/g, deps);
+    return finalStyle;
 }
 
 function getDependentStyles(packages) {

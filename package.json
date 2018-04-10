@@ -5,7 +5,7 @@
     "author": "ajithr",
     "license": "MIT",
     "dependencies": {
-        "@syncfusion/ej2": "*"
+        "@syncfusion/ej2": "*"        
     },
     "devDependencies": {
         "glob": "^7.1.2",
