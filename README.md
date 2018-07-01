@@ -1,5 +1,7 @@
 # Custom Style Generator for Essential JS 2 Components
 
+> Syncfusion is now officially rolled out the ThemeStudio for Essential JS 2 components to customize its styles. So we suggest you to use the [ThemeStudio](https://ej2.syncfusion.com/themestudio/) web tool instead of this plugin to generate the custom theme.
+
 ## Installing
 
 To install the dependent packages, use the below command.
